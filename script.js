@@ -60,6 +60,19 @@ const newRun = async () => {
     //   },
     // });
     // console.log(user);
+    // const user = await User.findById("6311b26839350d4c4db03b1a");
+    // const users = await User.find({ name: "Mirajul" });
+    const users = await User.where("name").equals("Mirajul");
+    const user = await User.where("age")
+      .gt("12")
+      .lt("21")
+      .where("name")
+      .equals("Mirajul")
+      .populate("bestFriend")
+      .limit(1);
+    // user[0].bestFriend = "6311b26839350d4c4db03b1a";
+    // await user[0].save();
+    console.log(user);
   } catch (e) {
     console.log(e.message);
   }
